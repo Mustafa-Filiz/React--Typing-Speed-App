@@ -3,10 +3,18 @@
 }
 
 .display{
-  width: 600px;
-  height: 300px;
+  width: 800px;
+  height: 150px;
   border: 1px solid #000;
   margin: auto;
+  overflow: auto;
+  text-align: left;
+}
+
+.display p {
+  display: inline-block;
+  margin: 5px 10px 5px 0;
+  font-size: 1.2rem;
 }
 
 .form{

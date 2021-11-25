@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchWordsAsync } from '../redux/appSlice';
 
 function Restart() {
-	return (
-		<div>
-			<button>Restart</button>
-		</div>
-	)
+    const dispatch = useDispatch();
+
+    return (
+        <div>
+            <button onClick={() => dispatch(fetchWordsAsync())}>Restart</button>
+        </div>
+    );
 }
 
-export default Restart
+export default Restart;

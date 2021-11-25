@@ -1,11 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 function Display() {
-	return (
-		<div className="display">
-			screen
-		</div>
-	)
+    const text = useSelector((state) => state.app.text);
+
+    return (
+        <div className="display">
+            {text && text.map((p, index) => (
+                <p key={index}>{p}</p>
+            ))}
+        </div>
+    );
 }
 
-export default Display
+export default Display;
