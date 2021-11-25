@@ -2,3 +2,14 @@
   text-align: center;
 }
 
+.display{
+  width: 600px;
+  height: 300px;
+  border: 1px solid #000;
+  margin: auto;
+}
+
+.form{
+  display: flex;
+  justify-content: center;
+}
