@@ -1,9 +1,14 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { timerSelector } from '../redux/appSlice'
 
-function Timer() {
+function Timer({timer}) {
+
+	// const timer = useSelector(timerSelector)
+
 	return (
 		<div>
-			1:00
+			{timer}
 		</div>
 	)
 }

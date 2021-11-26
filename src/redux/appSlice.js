@@ -1,36 +1,25 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice } from '@reduxjs/toolkit';
 
-export const fetchWordsAsync = createAsyncThunk('get/getWords', async () => {
-    const res = await axios.get(
-        'https://random-word-api.herokuapp.com/word?number=300&swear=0'
-    );
-    return res.data;
-});
+import randomWords from "random-words"
 
 export const appSlice = createSlice({
     name: 'app',
     initialState: {
-        text: '',
-        isLoading: false,
-        error: '',
+        text: randomWords(300),
+        typing: '',
+        timer: 60,
     },
-    reducers: {},
-    extraReducers: {
-        [fetchWordsAsync.pending]: (state) => {
-            state.isLoading = true;
-        },
-        [fetchWordsAsync.fulfilled]: (state, action) => {
-            state.text = action.payload;
-            state.isLoading = false;
-        },
-        [fetchWordsAsync.rejected]: (state, action) => {
-            state.error = action.error.message;
-            state.isLoading = false;
+    reducers: {
+        setTyping: (state, action) => {
+            state.typing = action.payload;
         },
     },
 });
 
 export const textSelector = (state) => state.app.text;
+export const typingSelector = (state) => state.app.typing;
+export const timerSelector = (state) => state.app.timer;
+
+export const { setTyping, countdown } = appSlice.actions;
 
 export default appSlice.reducer;
